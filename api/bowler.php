@@ -6,14 +6,7 @@
  */
 require_once "bowler_lib.php";
 
-/**
- * Add a user
- * @param firstname Non-empty firstname
- * @param lastname Non-empty lastname
- * @param email A valid email address
- * @param password Password
- * @return id The id of the bowler added
- */
+/** Create a new bowler */
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$firstname = purifyInput($_POST["firstname"]);
 	$lastname = purifyInput($_POST["lastname"]);
@@ -45,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
 }
 
-// Request data about a user
+/** Get a specific bowler */
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 	$bowlerId = (int) purifyInput($_GET["bowler_id"]);
 	

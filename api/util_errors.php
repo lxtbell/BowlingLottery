@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * @author      Xiaotian Le
+ * @version     1.0
+ * @since       2015-11-10
+ */
 define("ERROR_LEAGUE_NOT_FOUND", "League not found.");
 define("ERROR_BOWLERS_NOT_IN_LEAGUE", "Bowler not in the league.");
 define("ERROR_NO_BOWLER_IN_LOTTERY", "No bowlers entered the lottery in the league.");
@@ -22,7 +26,7 @@ function processError($e) {
 }
 
 function encodeError($desc) {
-	return json_encode(array("error", $desc));
+	return json_encode(array("error" => $desc));
 }
 
 function echoError($desc) {

@@ -1,11 +1,16 @@
 <?php
+/**
+ * @author      Xiaotian Le
+ * @version     1.0
+ * @since       2015-11-10
+ */
 require_once "bowler_lib.php";
 require_once "league_lib.php";
 require_once "lottery_lib.php";
 
 define("TARGET_PINS", 10);
 
-// The winner attempts to get the strike
+/** Record the winning bowler's roll */
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$leagueId = (int) purifyInput($_POST["league_id"]);
 	$bowlerId = (int) purifyInput($_POST["bowler_id"]);
@@ -49,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
 }
 
-// Request data about the attempt
+/** Get the winning bowler's roll */
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 	$leagueId = (int) purifyInput($_GET["league_id"]);
 	$bowlerId = (int) purifyInput($_GET["bowler_id"]);

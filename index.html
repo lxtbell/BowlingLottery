@@ -1,18 +1,7 @@
 <html>
 <body>
 
-<p>Get All Bowlers<br></p>
-<form action="api/bowler_list.php" method="get">
-<input type="submit">
-</form>
-
-<p>Get Bowler Information<br></p>
-<form action="api/bowler.php" method="get">
-Bowler Id: <input type="text" name="bowler_id"><br>
-<input type="submit">
-</form>
-
-<p>Add Bowler<br></p>
+<p>Create a new bowler<br></p>
 <form action="api/bowler.php" method="post">
 Firstname: <input type="text" name="firstname"><br>
 Lastname: <input type="text" name="lastname"><br>
@@ -21,18 +10,18 @@ Password: <input type="password" name="password"><br>
 <input type="submit">
 </form>
 
-<p>Get All Leagues<br></p>
-<form action="api/league_list.php" method="get">
+<p>Get all bowlers<br></p>
+<form action="api/bowler_list.php" method="get">
 <input type="submit">
 </form>
 
-<p>Get League Information<br></p>
-<form action="api/league.php" method="get">
-League Id: <input type="text" name="league_id"><br>
+<p>Get a specific bowler<br></p>
+<form action="api/bowler.php" method="get">
+Bowler Id: <input type="text" name="bowler_id"><br>
 <input type="submit">
 </form>
 
-<p>Establish League<br></p>
+<p>Create a new league<br></p>
 <form action="api/league.php" method="post">
 Name: <input type="text" name="name"><br>
 Description: <input type="text" name="descr"><br>
@@ -40,27 +29,31 @@ Capacity: <input type="text" name="capacity"><br>
 <input type="submit">
 </form>
 
-<p>Get All League Members<br></p>
-<form action="api/league_members.php" method="get">
+<p>Get all leagues<br></p>
+<form action="api/league_list.php" method="get">
+<input type="submit">
+</form>
+
+<p>Get a specific league<br></p>
+<form action="api/league.php" method="get">
 League Id: <input type="text" name="league_id"><br>
 <input type="submit">
 </form>
 
-<p>Join League<br></p>
+<p>Add a bowler to a league<br></p>
 <form action="api/league_members.php" method="post">
 League Id: <input type="text" name="league_id"><br>
 Bowler Id: <input type="text" name="bowler_id"><br>
 <input type="submit">
 </form>
 
-<p>Get Ticket Information<br></p>
-<form action="api/lottery_tickets.php" method="get">
+<p>Get all bowlers in a league<br></p>
+<form action="api/league_members.php" method="get">
 League Id: <input type="text" name="league_id"><br>
-Bowler Id: <input type="text" name="bowler_id"><br>
 <input type="submit">
 </form>
 
-<p>Buy Tickets<br></p>
+<p>Purchase a ticket for a bowler for a lottery<br></p>
 <form action="api/lottery_tickets.php" method="post">
 League Id: <input type="text" name="league_id"><br>
 Bowler Id: <input type="text" name="bowler_id"><br>
@@ -68,30 +61,37 @@ Tickets: <input type="text" name="tickets"><br>
 <input type="submit">
 </form>
 
-<p>Get League Winner<br></p>
-<form action="api/lottery_winner.php" method="get">
+<p>Get ticket price and tickets bought for a bowler for a lottery<br></p>
+<form action="api/lottery_tickets.php" method="get">
 League Id: <input type="text" name="league_id"><br>
+Bowler Id: <input type="text" name="bowler_id"><br>
 <input type="submit">
 </form>
 
-<p>Roll Winner<br></p>
+<p>Draw a winner for a lottery<br></p>
 <form action="api/lottery_winner.php" method="post">
 League Id: <input type="text" name="league_id"><br>
 <input type="submit">
 </form>
 
-<p>Get Attempt Information<br></p>
-<form action="api/lottery_attempt.php" method="get">
+<p>Get the winner for a lottery<br></p>
+<form action="api/lottery_winner.php" method="get">
 League Id: <input type="text" name="league_id"><br>
-Bowler Id: <input type="text" name="bowler_id"><br>
 <input type="submit">
 </form>
 
-<p>Attempt<br></p>
+<p>Record the winning bowler's roll<br></p>
 <form action="api/lottery_attempt.php" method="post">
 League Id: <input type="text" name="league_id"><br>
 Bowler Id: <input type="text" name="bowler_id"><br>
 Pins Knocked: <input type="text" name="pins_knocked"><br>
+<input type="submit">
+</form>
+
+<p>Get the winning bowler's roll<br></p>
+<form action="api/lottery_attempt.php" method="get">
+League Id: <input type="text" name="league_id"><br>
+Bowler Id: <input type="text" name="bowler_id"><br>
 <input type="submit">
 </form>
 

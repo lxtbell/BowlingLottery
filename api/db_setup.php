@@ -1,7 +1,12 @@
 <?php
+/**
+ * @author      Xiaotian Le
+ * @version     1.0
+ * @since       2015-11-10
+ */
 require_once "db.php";
 
-// Setup the database
+/** Setup the database */
 try {
 	$conn = connectHost();
 	echo "Connected to host successfully<br>";

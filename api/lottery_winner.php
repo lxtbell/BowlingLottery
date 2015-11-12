@@ -1,8 +1,13 @@
 <?php
+/**
+ * @author      Xiaotian Le
+ * @version     1.0
+ * @since       2015-11-10
+ */
 require_once "league_lib.php";
 require_once "lottery_lib.php";
 
-// Roll the winner
+/** Draw a winner for a lottery */
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$leagueId = (int) purifyInput($_POST["league_id"]);
 
@@ -32,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
 }
 
-// Request data about the winner
+/** Get the winner for a lottery */
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 	$leagueId = (int) purifyInput($_GET["league_id"]);
 

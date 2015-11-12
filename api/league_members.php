@@ -1,8 +1,13 @@
 <?php
+/**
+ * @author      Xiaotian Le
+ * @version     1.0
+ * @since       2015-11-10
+ */
 require_once "bowler_lib.php";
 require_once "league_lib.php";
 
-// Add a bowler to a league
+/** Add a bowler to a league */
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$leagueId = (int) purifyInput($_POST["league_id"]);
 	$bowlerId = (int) purifyInput($_POST["bowler_id"]);
@@ -36,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
 }
 
-// Return all bowlers in a league
+/** Get all bowlers in a league */
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 	$leagueId = (int) purifyInput($_GET["league_id"]);
 

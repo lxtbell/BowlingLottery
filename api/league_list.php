@@ -1,8 +1,15 @@
 <?php
+/**
+ * @author      Xiaotian Le
+ * @version     1.0
+ * @since       2015-11-10
+ */
 require_once "league_lib.php";
 
-// High potential bandwidth!
-// Get all leagues
+/**
+ * Get all leagues
+ * High potential bandwidth!
+ */
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 	try {
 		$conn = connectDb();

@@ -9,7 +9,6 @@ require_once "bowler_lib.php";
 /**
  * Get all bowlers
  * High potential bandwidth!
- * @return array An array of bowler data including id, Email, payouts, firstname, lastname, and registration date
  */
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 	try {

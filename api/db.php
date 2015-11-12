@@ -1,4 +1,9 @@
 <?php
+/**
+ * @author      Xiaotian Le
+ * @version     1.0
+ * @since       2015-11-10
+ */
 require_once "util.php";
 
 $db_servername = "localhost";	// Database server

@@ -1,7 +1,12 @@
 <?php
+/**
+ * @author      Xiaotian Le
+ * @version     1.0
+ * @since       2015-11-10
+ */
 require_once "league_lib.php";
 
-// Establish a league
+/** Create a new league */
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$name = purifyInput($_POST["name"]);
 	//$ticket_price = (int) purifyInput($_POST["ticket_price"]);
@@ -30,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
 }
 
-// Request data about a league
+/** Get a specific league */
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 	$leagueId = (int) purifyInput($_GET["league_id"]);
 	

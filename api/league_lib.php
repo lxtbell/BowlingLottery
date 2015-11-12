@@ -1,6 +1,17 @@
 <?php
+/**
+ * @author      Xiaotian Le
+ * @version     1.0
+ * @since       2015-11-10
+ */
 require_once "db.php";
 
+/**
+ * Find the record for a specific league
+ * @param PDO $conn PDO object to the database
+ * @param int $leagueId League's id
+ * @return array An row of league data
+ */
 function findLeagueRecord($conn, $leagueId) {
 	global $db_table_leagues;
 	
@@ -17,6 +28,12 @@ function findLeagueRecord($conn, $leagueId) {
 	return $stmt->fetch();
 }
 
+/**
+ * Find the total number of bowlers in a specific league
+ * @param PDO $conn PDO object to the database
+ * @param int $leagueId League's id
+ * @return int The total number
+ */
 function findLeagueBowlersCount($conn, $leagueId) {
 	global $db_table_league_bowlers;
 
@@ -29,6 +46,13 @@ function findLeagueBowlersCount($conn, $leagueId) {
 	return $stmt->fetch()["totalBowlers"];
 }
 
+/**
+ * Find the record for a specific bowler in a specific league
+ * @param PDO $conn PDO object to the database
+ * @param int $leagueId League's id
+ * @param int $bowlerId Bowler's id
+ * @return array An row of bowler data in the league
+ */
 function findLeagueBowlerRecord($conn, $leagueId, $bowlerId) {
 	global $db_table_league_bowlers;
 
