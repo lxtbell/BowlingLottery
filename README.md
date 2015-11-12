@@ -4,7 +4,7 @@ The API is based on MySQL and PHP.
 
 ## Setup
 
-Edit MySQL database server, user name, password, and scheme name in `api/db.php`:
+Edit MySQL database server, user name, password, and scheme name in `/api/db.php`.
 
 ```php
 	$db_servername = "localhost";	// Database server
@@ -13,7 +13,11 @@ Edit MySQL database server, user name, password, and scheme name in `api/db.php`
 	$db_dbname = "bowling";			// Scheme name
 ```
 
-Run `api/db_setup.php` in web browser.
+Run `/api/db_setup.php` in web browser.
+
+## Usage
+
+All the following usages can be found in `index.html`.
 
 ## Usage - Bowlers
 
@@ -35,7 +39,9 @@ Sample Request
 
 Sample Response
 ```json
-{"id":"1"}
+{
+	"id":"1"
+}
 ```
 
 ### Get all bowlers
@@ -44,24 +50,22 @@ Sample Response
 
 Sample Response
 ```json
-[
-{
-    "id":"1",
-    "firstname":"Xiaotian",
-    "lastname":"Le",
-    "email":"bellle126@gmail.com",
-    "reg_date":"2015-11-12 01:11:15",
-    "payouts":"303"
+[{
+	"id":"1",
+	"firstname":"Xiaotian",
+	"lastname":"Le",
+	"email":"bellle126@gmail.com",
+	"reg_date":"2015-11-12 12:41:44",
+	"payouts":"30"
 },
 {
-    "id":"2",
-    "firstname":"Xiaotian",
-    "lastname":"Le",
-    "email":"lxtbell@gmail.com",
-    "reg_date":"2015-11-12 00:25:25",
-    "payouts":"347"
-}
-]
+	"id":"2",
+	"firstname":"Xiaotian",
+	"lastname":"Le",
+	"email":"lxtbell@gmail.com",
+	"reg_date":"2015-11-12 12:41:55",
+	"payouts":"0"
+}]
 ```
 
 ### Get a specific bowler
@@ -70,7 +74,9 @@ Sample Response
 
 Sample Request
 ```json
-{"bowler_id":"1"}
+{
+	"bowler_id":"1"
+}
 ```
 
 Sample Response
@@ -81,7 +87,7 @@ Sample Response
 	"lastname":"Le",
 	"email":"bellle126@gmail.com",
 	"reg_date":"2015-11-12 01:11:15",
-	"payouts":"303"
+	"payouts":"30"
 }
 ```
 
@@ -91,20 +97,23 @@ Sample Response
 
 `POST /api/league.php`
 
+(Set capacity to 0 for unlimited capacity)
 (Returns the id of the league added)
 
 Sample Request
 ```json
 {
 	"name":"Alpha",
-	"descr":"Description of the Alpha League",
+	"descr":"Description of Alpha League",
 	"capacity":"0"
 }
 ```
 
 Sample Response
 ```json
-{"id":"1"}
+{
+	"id":"1"
+}
 ```
 
 ### Get all leagues
@@ -113,30 +122,28 @@ Sample Response
 
 Sample Response
 ```json
-[
-{
+[{
 	"id":"1",
 	"name":"Alpha",
 	"ticket_price":"1",
-	"estab_date":"2015-11-12 01:11:15",
-	"descr":"Alpha Desc",
-	"capacity":"3",
-	"lottery_pool":"0",
+	"estab_date":"2015-11-12 12:45:53",
+	"descr":"Description of Alpha League",
+	"capacity":"0",
+	"lottery_pool":"270",
 	"lottery_id":"201546",
-	"lottery_winner":"2"
+	"lottery_winner":"1"
 },
 {
 	"id":"2",
 	"name":"Beta",
 	"ticket_price":"1",
-	"estab_date":"2015-11-12 00:27:09",
-	"descr":"Beta Desc",
-	"capacity":"0",
+	"estab_date":"2015-11-12 12:43:50",
+	"descr":"Description of Beta League",
+	"capacity":"10",
 	"lottery_pool":"0",
-	"lottery_id":"201546",
+	"lottery_id":null,
 	"lottery_winner":null
-}
-]
+}]
 ```
 
 ### Get a specific league
@@ -145,7 +152,9 @@ Sample Response
 
 Sample Request
 ```json
-{"league_id":"1"}
+{
+	"league_id":"1"
+}
 ```
 
 Sample Response
@@ -154,12 +163,12 @@ Sample Response
 	"id":"1",
 	"name":"Alpha",
 	"ticket_price":"1",
-	"estab_date":"2015-11-12 01:11:15",
-	"descr":"Alpha Desc",
-	"capacity":"3",
-	"lottery_pool":"0",
+	"estab_date":"2015-11-12 12:45:53",
+	"descr":"Description of Alpha League",
+	"capacity":"0",
+	"lottery_pool":"270",
 	"lottery_id":"201546",
-	"lottery_winner":"2"
+	"lottery_winner":"1"
 }
 ```
 
@@ -179,7 +188,9 @@ Sample Request
 
 Sample Response
 ```json
-{"id":"1"}
+{
+	"id":"1"
+}
 ```
 
 ### Get all bowlers in a league
@@ -188,25 +199,25 @@ Sample Response
 
 Sample Request
 ```json
-{"league_id":"1"}
+{
+	"league_id":"1"
+}
 ```
 
 Sample Response
 ```json
-[
+[{
+	"id":"1",
+	"league_id":"1",
+	"bowler_id":"1",
+	"join_date":"2015-11-12 12:44:01"
+},
 {
 	"id":"2",
 	"league_id":"1",
-	"bowler_id":"1",
-	"join_date":"2015-11-12 00:25:54"
-},
-{
-	"id":"3",
-	"league_id":"1",
 	"bowler_id":"2",
-	"join_date":"2015-11-12 00:26:02"
-}
-]
+	"join_date":"2015-11-12 12:44:02"
+}]
 ```
 
 ## Usage - Lotteries
@@ -229,13 +240,13 @@ Sample Request
 Sample Response
 ```json
 {
-	"lotteryId":"201546",
-	"newTickets":"100",
-	"newLotteryPool":"200"
+	"lotteryId":201546,
+	"newTickets":100,
+	"newLotteryPool":300
 }
 ```
 
-### Get all tickets for a bowler for a lottery
+### Get ticket price and tickets bought for a bowler for a lottery
 
 `GET /api/lottery_tickets.php`
 
@@ -243,16 +254,17 @@ Sample Request
 ```json
 {
 	"league_id":"1",
-	"bowler_id":"1",
+	"bowler_id":"1"
 }
 ```
 
 Sample Response
 ```json
 {
-	"lotteryId":"201546",
-	"newTickets":"100",
-	"newLotteryPool":"200"
+	"ticketPrice":"1",
+	"lotteryId":201546,
+	"tickets":"100",
+	"lotteryPool":"300"
 }
 ```
 
@@ -265,7 +277,7 @@ Sample Response
 Sample Request
 ```json
 {
-	"league_id":"1",
+	"league_id":"1"
 }
 ```
 
@@ -273,8 +285,8 @@ Sample Response
 ```json
 {
 	"lotteryId":201546,
-	"lotteryPool":"100",
-	"lotteryWinner":"2"
+	"lotteryPool":"270",
+	"lotteryWinner":"1"
 }
 ```
 
@@ -285,7 +297,7 @@ Sample Response
 Sample Request
 ```json
 {
-	"league_id":"1",
+	"league_id":"1"
 }
 ```
 
@@ -293,8 +305,8 @@ Sample Response
 ```json
 {
 	"lotteryId":201546,
-	"lotteryPool":"100",
-	"lotteryWinner":"2"
+	"lotteryPool":"270",
+	"lotteryWinner":"1"
 }
 ```
 
@@ -308,8 +320,8 @@ Sample Request
 ```json
 {
 	"league_id":"1",
-	"bowler_id":"2",
-	"pins_knocked":"10"
+	"bowler_id":"1",
+	"pins_knocked":"5"
 }
 ```
 
@@ -317,9 +329,9 @@ Sample Response
 ```json
 {
 	"lotteryId":201546,
-	"newLotteryPool":0,
-	"newPayouts":100,
-	"earned":"100"
+	"newLotteryPool":270,
+	"newPayouts":60,
+	"earned":"30"
 }
 ```
 
@@ -331,17 +343,24 @@ Sample Request
 ```json
 {
 	"league_id":"1",
-	"bowler_id":"2",
-	"pins_knocked":"10"
+	"bowler_id":"1",
 }
 ```
 
 Sample Response
 ```json
 {
-	"lotteryId":201546,
-	"newLotteryPool":0,
-	"newPayouts":100,
-	"earned":"100"
+	"pins_knocked":"5"
+}
+```
+
+## Exceptions
+
+All the exception texts are defined in `/api/util_errors.php`.
+
+Sample Response in Case of an Exception
+```json
+{
+	"error":"Bowler not found."
 }
 ```

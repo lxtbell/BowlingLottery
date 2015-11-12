@@ -62,9 +62,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 		
 		$lotteryRecord = findLotteryRecord($conn, $leagueId, $bowlerId, $lotteryId);
 		$ticketPrice = $leagueRecord["ticket_price"];
+		$lotteryPool = $leagueRecord["lottery_pool"];
 		$curTickets = $lotteryRecord["tickets"];
 	
-		echo encodeOuput(array("ticketPrice" => $ticketPrice, "lotteryId" => $lotteryId, "tickets" => $curTickets));
+		echo encodeOuput(array("ticketPrice" => $ticketPrice, "lotteryId" => $lotteryId, "tickets" => $curTickets, "lotteryPool" => $lotteryPool));
 	}
 	catch(PDOException $e) {
 		processError($e);
