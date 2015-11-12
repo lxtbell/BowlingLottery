@@ -1,0 +1,99 @@
+<html>
+<body>
+
+<p>Get All Bowlers<br></p>
+<form action="api/bowler_list.php" method="get">
+<input type="submit">
+</form>
+
+<p>Get Bowler Information<br></p>
+<form action="api/bowler.php" method="get">
+Bowler Id: <input type="text" name="bowler_id"><br>
+<input type="submit">
+</form>
+
+<p>Add Bowler<br></p>
+<form action="api/bowler.php" method="post">
+Firstname: <input type="text" name="firstname"><br>
+Lastname: <input type="text" name="lastname"><br>
+E-mail: <input type="text" name="email"><br>
+Password: <input type="password" name="password"><br>
+<input type="submit">
+</form>
+
+<p>Get All Leagues<br></p>
+<form action="api/league_list.php" method="get">
+<input type="submit">
+</form>
+
+<p>Get League Information<br></p>
+<form action="api/league.php" method="get">
+League Id: <input type="text" name="league_id"><br>
+<input type="submit">
+</form>
+
+<p>Establish League<br></p>
+<form action="api/league.php" method="post">
+Name: <input type="text" name="name"><br>
+Description: <input type="text" name="descr"><br>
+Capacity: <input type="text" name="capacity"><br>
+<input type="submit">
+</form>
+
+<p>Get All League Members<br></p>
+<form action="api/league_members.php" method="get">
+League Id: <input type="text" name="league_id"><br>
+<input type="submit">
+</form>
+
+<p>Join League<br></p>
+<form action="api/league_members.php" method="post">
+League Id: <input type="text" name="league_id"><br>
+Bowler Id: <input type="text" name="bowler_id"><br>
+<input type="submit">
+</form>
+
+<p>Get Ticket Information<br></p>
+<form action="api/lottery_tickets.php" method="get">
+League Id: <input type="text" name="league_id"><br>
+Bowler Id: <input type="text" name="bowler_id"><br>
+<input type="submit">
+</form>
+
+<p>Buy Tickets<br></p>
+<form action="api/lottery_tickets.php" method="post">
+League Id: <input type="text" name="league_id"><br>
+Bowler Id: <input type="text" name="bowler_id"><br>
+Tickets: <input type="text" name="tickets"><br>
+<input type="submit">
+</form>
+
+<p>Get League Winner<br></p>
+<form action="api/lottery_winner.php" method="get">
+League Id: <input type="text" name="league_id"><br>
+<input type="submit">
+</form>
+
+<p>Roll Winner<br></p>
+<form action="api/lottery_winner.php" method="post">
+League Id: <input type="text" name="league_id"><br>
+<input type="submit">
+</form>
+
+<p>Get Attempt Information<br></p>
+<form action="api/lottery_attempt.php" method="get">
+League Id: <input type="text" name="league_id"><br>
+Bowler Id: <input type="text" name="bowler_id"><br>
+<input type="submit">
+</form>
+
+<p>Attempt<br></p>
+<form action="api/lottery_attempt.php" method="post">
+League Id: <input type="text" name="league_id"><br>
+Bowler Id: <input type="text" name="bowler_id"><br>
+Pins Knocked: <input type="text" name="pins_knocked"><br>
+<input type="submit">
+</form>
+
+</body>
+</html>
