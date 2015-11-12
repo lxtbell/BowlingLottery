@@ -15,13 +15,12 @@ Edit MySQL database server, user name, password, and scheme name in `api/db.php`
 
 Run `api/db_setup.php` in web browser.
 
-## Usage
-
-## Bowlers
+## Usage - Bowlers
 
 ### Create a new bowler
 
 `POST /api/bowler.php`
+
 (Returns the id of the bowler added)
 
 Sample Request
@@ -42,7 +41,6 @@ Sample Response
 ### Get all bowlers
 
 `GET /api/bowler_list.php`
-(Returns an array of bowler data including id, Email, payouts, firstname, lastname, and registration date)
 
 Sample Response
 ```json
@@ -69,11 +67,10 @@ Sample Response
 ### Get a specific bowler
 
 `GET /api/bowler.php`
-(Returns the bowler data including id, Email, payouts, firstname, lastname, and registration date)
 
 Sample Request
 ```json
-{"id":"1"}
+{"bowler_id":"1"}
 ```
 
 Sample Response
@@ -88,11 +85,12 @@ Sample Response
 }
 ```
 
-## Leagues
+## Usage - Leagues
 
 ### Create a new league
 
 `POST /api/league.php`
+
 (Returns the id of the league added)
 
 Sample Request
@@ -112,7 +110,6 @@ Sample Response
 ### Get all leagues
 
 `GET /api/league_list.php`
-(Returns an array of league data)
 
 Sample Response
 ```json
@@ -140,15 +137,15 @@ Sample Response
 	"lottery_winner":null
 }
 ]
+```
 
 ### Get a specific league
 
 `GET /api/league.php`
-(Returns the league data)
 
 Sample Request
 ```json
-{"id":"1"}
+{"league_id":"1"}
 ```
 
 Sample Response
@@ -168,97 +165,183 @@ Sample Response
 
 ### Add a bowler to a league
 
-```javascript
-  client.joinLeague({
-    bowlerId: 1,
-    leagueId: 1,
-    success: function(bowlers) {
-      console.log(bowlers);
-    },
-    error: function(xhr)  {
-      console.log(JSON.parse(xhr.responseText));
-    }
-  });
+`POST /api/league_members.php`
+
+(Returns the corresponding record id)
+
+Sample Request
+```json
+{
+	"league_id":"1",
+	"bowler_id":"1"
+}
+```
+
+Sample Response
+```json
+{"id":"1"}
 ```
 
 ### Get all bowlers in a league
 
-```javascript
-  client.getBowlers({
-    leagueId: 1,
-    success: function(bowlers) {
-      console.log(bowlers);
-    },
-    error: function(xhr)  {
-      console.log(JSON.parse(xhr.responseText));
-    }
-  });
+`GET /api/league_members.php`
+
+Sample Request
+```json
+{"league_id":"1"}
 ```
 
-## Lotteries
+Sample Response
+```json
+[
+{
+	"id":"2",
+	"league_id":"1",
+	"bowler_id":"1",
+	"join_date":"2015-11-12 00:25:54"
+},
+{
+	"id":"3",
+	"league_id":"1",
+	"bowler_id":"2",
+	"join_date":"2015-11-12 00:26:02"
+}
+]
+```
+
+## Usage - Lotteries
 
 ### Purchase a ticket for a bowler for a lottery
 
-```javascript
-  client.purchaseTicket({
-    bowlerId: 1,
-    leagueId: 1,
-    lotteryId: 1,
-    success: function(ticket) {
-      console.log(ticket);
-    },
-    error: function(xhr)  {
-      console.log(JSON.parse(xhr.responseText));
-    }
-  });
+`POST /api/lottery_tickets.php`
+
+(Returns the lottery event id, the new amount of tickets owned, and the new lottery pool)
+
+Sample Request
+```json
+{
+	"league_id":"1",
+	"bowler_id":"1",
+	"tickets":"100"
+}
+```
+
+Sample Response
+```json
+{
+	"lotteryId":"201546",
+	"newTickets":"100",
+	"newLotteryPool":"200"
+}
 ```
 
 ### Get all tickets for a bowler for a lottery
 
-```javascript
-  client.getTickets({
-    leagueId: 1,
-    lotteryId: 1,
-    success: function(lotteries) {
-      console.log(lotteries);
-    },
-    error: function(xhr)  {
-      console.log(JSON.parse(xhr.responseText));
-    }
-  });
+`GET /api/lottery_tickets.php`
+
+Sample Request
+```json
+{
+	"league_id":"1",
+	"bowler_id":"1",
+}
+```
+
+Sample Response
+```json
+{
+	"lotteryId":"201546",
+	"newTickets":"100",
+	"newLotteryPool":"200"
+}
 ```
 
 ### Draw a winner for a lottery
 
-```javascript
-  client.drawWinner({
-    leagueId: 1,
-    lotteryId: 1,
-    success: function(roll) {
-      console.log(roll);
-    },
-    error: function(xhr)  {
-      console.log(JSON.parse(xhr.responseText));
-    }
-  });
+`POST /api/lottery_winner.php`
+
+(Returns the lottery event id, the lottery pool, and the winner's id)
+
+Sample Request
+```json
+{
+	"league_id":"1",
+}
+```
+
+Sample Response
+```json
+{
+	"lotteryId":201546,
+	"lotteryPool":"100",
+	"lotteryWinner":"2"
+}
 ```
 
 ### Get the winner for a lottery
 
+`GET /api/lottery_winner.php`
+
+Sample Request
+```json
+{
+	"league_id":"1",
+}
+```
+
+Sample Response
+```json
+{
+	"lotteryId":201546,
+	"lotteryPool":"100",
+	"lotteryWinner":"2"
+}
+```
+
 ### Record the winning bowler's roll
 
-```javascript
-  client.updateRoll({
-    leagueId: 1,
-    lotteryId: 1,
-    pinCount: 7,
-    success: function(roll) {
-      console.log(roll);
-    },
-    error: function(xhr)  {
-      console.log(JSON.parse(xhr.responseText));
-    }
-  });
+`POST /api/lottery_attempt.php`
+
+(Returns the lottery event id, the new lottery pool, the new payouts, and the money earned in the event)
+
+Sample Request
+```json
+{
+	"league_id":"1",
+	"bowler_id":"2",
+	"pins_knocked":"10"
+}
+```
+
+Sample Response
+```json
+{
+	"lotteryId":201546,
+	"newLotteryPool":0,
+	"newPayouts":100,
+	"earned":"100"
+}
 ```
 
 ### Get the winning bowler's roll
+
+`GET /api/lottery_attempt.php`
+
+Sample Request
+```json
+{
+	"league_id":"1",
+	"bowler_id":"2",
+	"pins_knocked":"10"
+}
+```
+
+Sample Response
+```json
+{
+	"lotteryId":201546,
+	"newLotteryPool":0,
+	"newPayouts":100,
+	"earned":"100"
+}
+```
