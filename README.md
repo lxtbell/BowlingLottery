@@ -4,16 +4,15 @@ The API is based on MySQL and PHP.
 
 ## Setup
 
-Edit MySQL database server, user name, password, and scheme name in `/api/db.php`.
+Edit MySQL database server, user name, and password in `/api/db.php`.
 
 ```php
 	$db_servername = "localhost";	// Database server
 	$db_username = "dbadmin";		// Database user name 
 	$db_password = "123456";		// Database user password
-	$db_dbname = "bowling";			// Scheme name
 ```
 
-Run `/api/db_setup.php` in web browser.
+Run `/api/db_setup.php` in web browser to create the scheme and the tables.
 
 ## Usage
 
