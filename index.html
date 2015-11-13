@@ -24,8 +24,7 @@
 		<thead>
 			<tr>
 				<th><h3>Bowlers</h3></th>
-				<th><h3>Leagues</h3></th>
-				<th><h3>Lottery Tickets</h3></th>
+				<th colspan="2"><h3>Leagues</h3></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -50,11 +49,10 @@
 					</form>
 				</td>
 				<td>
-					<b>Purchase a ticket for a bowler for a lottery</b>
-					<form action="api/lottery_tickets.php" method="post">
+					<b>Add a bowler to a league</b>
+					<form action="api/league_members.php" method="post">
 					League Id: <input type="text" class="form-control" name="league_id"><br>
 					Bowler Id: <input type="text" class="form-control" name="bowler_id"><br>
-					Tickets: <input type="text" class="form-control" name="tickets"><br>
 					<button type="submit" class="btn btn-default">Submit</button>
 					</form>
 				</td>
@@ -85,10 +83,9 @@
 					</form>
 				</td>
 				<td>
-					<b>Get ticket price and tickets bought for a bowler for a lottery</b>
-					<form action="api/lottery_tickets.php" method="get">
+					<b>Get all bowlers in a league</b>
+					<form action="api/league_members.php" method="get">
 					League Id: <input type="text" class="form-control" name="league_id"><br>
-					Bowler Id: <input type="text" class="form-control" name="bowler_id"><br>
 					<button type="submit" class="btn btn-default">Submit</button>
 					</form>
 				</td>
@@ -99,17 +96,18 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<th><h3>League Members</h3></th>
+				<th><h3>Lottery Tickets</h3></th>
 				<th colspan="2"><h3>Lottery</h3></th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td>
-					<b>Add a bowler to a league</b>
-					<form action="api/league_members.php" method="post">
+					<b>Purchase a ticket for a bowler for a lottery</b>
+					<form action="api/lottery_tickets.php" method="post">
 					League Id: <input type="text" class="form-control" name="league_id"><br>
 					Bowler Id: <input type="text" class="form-control" name="bowler_id"><br>
+					Tickets: <input type="text" class="form-control" name="tickets"><br>
 					<button type="submit" class="btn btn-default">Submit</button>
 					</form>
 				</td>
@@ -132,9 +130,10 @@
 			</tr>
 			<tr>
 				<td>
-					<b>Get all bowlers in a league</b>
-					<form action="api/league_members.php" method="get">
+					<b>Get ticket price and tickets bought for a bowler for a lottery</b>
+					<form action="api/lottery_tickets.php" method="get">
 					League Id: <input type="text" class="form-control" name="league_id"><br>
+					Bowler Id: <input type="text" class="form-control" name="bowler_id"><br>
 					<button type="submit" class="btn btn-default">Submit</button>
 					</form>
 				</td>
