@@ -1,99 +1,170 @@
 <html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<meta name="description" content="Bowling Lottery API">
+	<meta name="author" content="Xiaotian Le">
+
+	<title>Bowling Lottery API</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="css/bootstrap.css" rel="stylesheet">
+
+	<!-- Bootstrap theme -->
+	<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+</head>
 <body>
 
-<p>Create a new bowler<br></p>
-<form action="api/bowler.php" method="post">
-Firstname: <input type="text" name="firstname"><br>
-Lastname: <input type="text" name="lastname"><br>
-E-mail: <input type="text" name="email"><br>
-Password: <input type="password" name="password"><br>
-<input type="submit">
-</form>
-
-<p>Get all bowlers<br></p>
-<form action="api/bowler_list.php" method="get">
-<input type="submit">
-</form>
-
-<p>Get a specific bowler<br></p>
-<form action="api/bowler.php" method="get">
-Bowler Id: <input type="text" name="bowler_id"><br>
-<input type="submit">
-</form>
-
-<p>Create a new league<br></p>
-<form action="api/league.php" method="post">
-Name: <input type="text" name="name"><br>
-Description: <input type="text" name="descr"><br>
-Capacity: <input type="text" name="capacity"><br>
-<input type="submit">
-</form>
-
-<p>Get all leagues<br></p>
-<form action="api/league_list.php" method="get">
-<input type="submit">
-</form>
-
-<p>Get a specific league<br></p>
-<form action="api/league.php" method="get">
-League Id: <input type="text" name="league_id"><br>
-<input type="submit">
-</form>
-
-<p>Add a bowler to a league<br></p>
-<form action="api/league_members.php" method="post">
-League Id: <input type="text" name="league_id"><br>
-Bowler Id: <input type="text" name="bowler_id"><br>
-<input type="submit">
-</form>
-
-<p>Get all bowlers in a league<br></p>
-<form action="api/league_members.php" method="get">
-League Id: <input type="text" name="league_id"><br>
-<input type="submit">
-</form>
-
-<p>Purchase a ticket for a bowler for a lottery<br></p>
-<form action="api/lottery_tickets.php" method="post">
-League Id: <input type="text" name="league_id"><br>
-Bowler Id: <input type="text" name="bowler_id"><br>
-Tickets: <input type="text" name="tickets"><br>
-<input type="submit">
-</form>
-
-<p>Get ticket price and tickets bought for a bowler for a lottery<br></p>
-<form action="api/lottery_tickets.php" method="get">
-League Id: <input type="text" name="league_id"><br>
-Bowler Id: <input type="text" name="bowler_id"><br>
-<input type="submit">
-</form>
-
-<p>Draw a winner for a lottery<br></p>
-<form action="api/lottery_winner.php" method="post">
-League Id: <input type="text" name="league_id"><br>
-<input type="submit">
-</form>
-
-<p>Get the winner for a lottery<br></p>
-<form action="api/lottery_winner.php" method="get">
-League Id: <input type="text" name="league_id"><br>
-<input type="submit">
-</form>
-
-<p>Record the winning bowler's roll<br></p>
-<form action="api/lottery_attempt.php" method="post">
-League Id: <input type="text" name="league_id"><br>
-Bowler Id: <input type="text" name="bowler_id"><br>
-Pins Knocked: <input type="text" name="pins_knocked"><br>
-<input type="submit">
-</form>
-
-<p>Get the winning bowler's roll<br></p>
-<form action="api/lottery_attempt.php" method="get">
-League Id: <input type="text" name="league_id"><br>
-Bowler Id: <input type="text" name="bowler_id"><br>
-<input type="submit">
-</form>
-
+	<div class="container">
+	<div class="col-sm-12">
+	<table class="table">
+		<thead>
+			<tr>
+				<th><h3>Bowlers</h3></th>
+				<th><h3>Leagues</h3></th>
+				<th><h3>Lottery Tickets</h3></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<b>Create a new bowler</b>
+					<form action="api/bowler.php" method="post" role="form">
+					Firstname: <input type="text" class="form-control" name="firstname"><br>
+					Lastname: <input type="text" class="form-control" name="lastname"><br>
+					E-mail: <input type="text" class="form-control" name="email"><br>
+					Password: <input type="password" class="form-control" name="password"><br>
+					<button type="submit" class="btn btn-default">Submit</button>
+					</form>
+				</td>
+				<td>
+					<b>Create a new league</b>
+					<form action="api/league.php" method="post">
+					Name: <input type="text" class="form-control" name="name"><br>
+					Description: <input type="text" class="form-control" name="descr"><br>
+					Capacity: <input type="text" class="form-control" name="capacity"><br>
+					<button type="submit" class="btn btn-default">Submit</button>
+					</form>
+				</td>
+				<td>
+					<b>Purchase a ticket for a bowler for a lottery</b>
+					<form action="api/lottery_tickets.php" method="post">
+					League Id: <input type="text" class="form-control" name="league_id"><br>
+					Bowler Id: <input type="text" class="form-control" name="bowler_id"><br>
+					Tickets: <input type="text" class="form-control" name="tickets"><br>
+					<button type="submit" class="btn btn-default">Submit</button>
+					</form>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b>Get all bowlers</b>
+					<form action="api/bowler_list.php" method="get">
+					<button type="submit" class="btn btn-default">Submit</button>
+					</form><br>
+					
+					<b>Get a specific bowler</b>
+					<form action="api/bowler.php" method="get">
+					Bowler Id: <input type="text" class="form-control" name="bowler_id"><br>
+					<button type="submit" class="btn btn-default">Submit</button>
+					</form>
+				</td>
+				<td>
+					<b>Get all leagues</b>
+					<form action="api/league_list.php" method="get">
+					<button type="submit" class="btn btn-default">Submit</button>
+					</form><br>
+					
+					<b>Get a specific league</b>
+					<form action="api/league.php" method="get">
+					League Id: <input type="text" class="form-control" name="league_id"><br>
+					<button type="submit" class="btn btn-default">Submit</button>
+					</form>
+				</td>
+				<td>
+					<b>Get ticket price and tickets bought for a bowler for a lottery</b>
+					<form action="api/lottery_tickets.php" method="get">
+					League Id: <input type="text" class="form-control" name="league_id"><br>
+					Bowler Id: <input type="text" class="form-control" name="bowler_id"><br>
+					<button type="submit" class="btn btn-default">Submit</button>
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<table class="table">
+		<thead>
+			<tr>
+				<th><h3>League Members</h3></th>
+				<th colspan="2"><h3>Lottery</h3></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<b>Add a bowler to a league</b>
+					<form action="api/league_members.php" method="post">
+					League Id: <input type="text" class="form-control" name="league_id"><br>
+					Bowler Id: <input type="text" class="form-control" name="bowler_id"><br>
+					<button type="submit" class="btn btn-default">Submit</button>
+					</form>
+				</td>
+				<td>
+					<b>Draw a winner for a lottery</b>
+					<form action="api/lottery_winner.php" method="post">
+					League Id: <input type="text" class="form-control" name="league_id"><br>
+					<button type="submit" class="btn btn-default">Submit</button>
+					</form>
+				</td>
+				<td>
+					<b>Record the winning bowler's roll</b>
+					<form action="api/lottery_attempt.php" method="post">
+					League Id: <input type="text" class="form-control" name="league_id"><br>
+					Bowler Id: <input type="text" class="form-control" name="bowler_id"><br>
+					Pins Knocked: <input type="text" class="form-control" name="pins_knocked"><br>
+					<button type="submit" class="btn btn-default">Submit</button>
+					</form>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<b>Get all bowlers in a league</b>
+					<form action="api/league_members.php" method="get">
+					League Id: <input type="text" class="form-control" name="league_id"><br>
+					<button type="submit" class="btn btn-default">Submit</button>
+					</form>
+				</td>
+				<td>
+					<b>Get the winner for a lottery</b>
+					<form action="api/lottery_winner.php" method="get">
+					League Id: <input type="text" class="form-control" name="league_id"><br>
+					<button type="submit" class="btn btn-default">Submit</button>
+					</form>
+				</td>
+				<td>
+					<b>Get the winning bowler's roll</b>
+					<form action="api/lottery_attempt.php" method="get">
+					League Id: <input type="text" class="form-control" name="league_id"><br>
+					Bowler Id: <input type="text" class="form-control" name="bowler_id"><br>
+					<button type="submit" class="btn btn-default">Submit</button>
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+	</div>
+	
+	<!-- Bootstrap core JavaScript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/index.js"></script>
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
 </body>
 </html>
