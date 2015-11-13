@@ -7,9 +7,10 @@ The API is based on MySQL and PHP.
 Edit MySQL database server, user name, and password in `/api/db.php`.
 
 ```php
-	$db_servername = "localhost";	// Database server
-	$db_username = "dbadmin";		// Database user name 
-	$db_password = "123456";		// Database user password
+$db_servername = "localhost";					// Database server
+$db_dbname = "bowling";      					// Scheme name
+$db_username = "dbadmin";    					// Database user name 
+$db_password = "123456";     					// Database user password
 ```
 
 Run `/api/db_setup.php` in web browser to create the scheme and the tables.
